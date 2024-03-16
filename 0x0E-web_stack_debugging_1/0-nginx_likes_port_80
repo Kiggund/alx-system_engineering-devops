@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Check if Nginx is running
+if pgrep nginx >/dev/null; then
+    # Remove the default Nginx configuration
+    sudo rm /etc/nginx/sites-enabled/default
+
+    # Create a symbolic link to the available configuration
+    sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+    # Restart Nginx
+    sudo systemctl restart nginx
+    # Check if Nginx is listening on port 80
+    if sudo netstat -plnt | grep ':80 ' | grep nginx; then
+        echo "Nginx is listening on port 80."
+    else
+        echo "Nginx is not listening on port 80."
+    fi
+
+    echo "Nginx configuration updated and restarted."
+else
+    echo "Nginx is not running. No changes made."
+fi

@@ -6,4 +6,3 @@
 rm /etc/nginx/sites-enabled/default
 ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx restart
- 5 changes: 5 additions & 0 deletions5 

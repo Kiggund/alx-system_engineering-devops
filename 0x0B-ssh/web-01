@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Start SSH agent and add SSH key
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/school
+
+# SSH into the server
+ssh -i ~/.ssh/school ubuntu@66942-web-01
